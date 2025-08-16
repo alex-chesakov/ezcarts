@@ -1,5 +1,9 @@
 <?php echo $header; ?>
 
+<?php if(!empty($success)){?>
+	<div class="p-6 pt-0 space-y-4"><div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div></div>
+<?php } ?>
+
 <?php if(empty($products) and empty($this->request->get['c'])){ ?>
 <!-- no products -->
 	<div class="flex-1 flex items-center justify-center">
@@ -8,7 +12,7 @@
 			
 			<p class="text-gray-600 mb-4">Please select a kitchen and add an address to start shopping</p>
 			
-			<a href="<?php echo $go_mykitchen;?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">Go to My Kitchens</a>
+			<a href="<?php echo $go_mykitchen;?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">Go to My Kitchens</a>
 			
 		</div>
 	</div>
@@ -17,16 +21,17 @@
 
 <div class="group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar" style="--sidebar-width:16rem; --sidebar-width-icon:3rem;">
 	<div class="flex w-full flex-1 pt-16">
-		<div class="group peer hidden md:block text-sidebar-foreground" data-state="expanded" data-collapsible="" data-variant="inset" data-side="left">
-			<div class="duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"></div>
+		<div class="group peer hidden md:block text-sidebar-foreground overflow-auto" data-state="expanded" data-collapsible="" data-variant="inset" data-side="left">
+<?php /*			<div class="duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"></div>*/	?>
 			
-			<div class="duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]">
-			
+			<div class="duration-200 <?php /*fixed*/	?> inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]">
+
 				<div class="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow">
 				
-					<div class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden pt-20">
+					<div class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden ">
+
 						<div class="relative flex w-full min-w-0 flex-col p-2">
-						
+
 							<div class="duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] ease-linear focus-visible:ring-2 [&amp;>svg]:size-4 [&amp;>svg]:shrink-0 group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-store mr-2">
 									<path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path><path d="M2 7h20"></path><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"></path>
@@ -36,8 +41,9 @@
 
 							<div class="w-full text-sm">
 								<div class="space-y-4 px-4 py-2">
+								
 									<div class="flex items-center space-x-2">
-										<button type="button" role="checkbox" aria-checked="false" data-state="unchecked" value="on" class="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground" id="restaurant-depo"></button>
+										<button type="button" role="checkbox" aria-checked="true" data-state="checked" value="on" class="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground" data-component-path="src/components/shop/CategoriesSidebar.tsx" data-component-name="Checkbox" data-component-line="44" data-component-file="CategoriesSidebar.tsx" data-component-content="%7B%7D" id="restaurant-depo"><span data-state="checked" class="flex items-center justify-center text-current" style="pointer-events: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-4 w-4" data-component-path="src/components/ui/checkbox.tsx" data-component-name="Check" data-component-line="22" data-component-file="checkbox.tsx" data-component-content="%7B%22className%22%3A%22h-4%20w-4%22%7D"><path d="M20 6 9 17l-5-5"></path></svg></span></button>
 										<label for="restaurant-depo" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Restaurant Depo</label>
 									</div>
 									
@@ -50,7 +56,8 @@
 								</div>
 							</div>
 						</div>
-						
+
+<!-- Merchants OFF -->
 						<div class="relative flex w-full min-w-0 flex-col p-2">
 							<div class="duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] ease-linear focus-visible:ring-2 [&amp;>svg]:size-4 [&amp;>svg]:shrink-0 group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers mr-2">
@@ -62,13 +69,13 @@ Categories
 							<div class="w-full text-sm">
 								<ul class="flex w-full min-w-0 flex-col gap-1">
 									<li class="group/menu-item relative">
-										<a href="<?php echo $go_shop;?>" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&amp;>span:last-child]:truncate [&amp;>svg]:size-4 [&amp;>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm">
+										<a href="<?php echo $go_shop;?>" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground  disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria- aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&amp;>span:last-child]:truncate [&amp;>svg]:size-4 [&amp;>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm">
 All Products</a>
 									</li>
 									<?php if(!empty($categories)){ ?>
 										<?php foreach($categories as $cat){ ?>
 											<li class="group/menu-item relative">
-												<a href="<?php echo $cat['href'];?>" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&amp;>span:last-child]:truncate [&amp;>svg]:size-4 [&amp;>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm"><?php echo $cat['name'];?></a>
+												<a href="<?php echo $cat['href'];?>" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground  disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria- aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&amp;>span:last-child]:truncate [&amp;>svg]:size-4 [&amp;>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm"><?php echo $cat['name'];?></a>
 											</li>
 										<?php };?>
 									<?php };?>
@@ -97,7 +104,7 @@ All Products</a>
 <div class="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-auto hide" id="result_search_suggest"></div>
 						</div>
 <!-- view block -->
-						<button class="justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex items-center gap-2 view_change">
+						<button class="justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex items-center gap-2 view_change">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grid3x3 h-4 w-4" ><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M3 15h18"></path><path d="M9 3v18"></path><path d="M15 3v18"></path></svg>
 						</button>
 					</div>
@@ -109,15 +116,19 @@ All Products</a>
 					<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow max-w-[160px] item_product" data-view="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex item_product">
 						<div class="relative aspect-w-16 aspect-h-9">
 							<img src="<?php echo $product['thumb'];?>" alt="<?php echo $product['name'];?>" class="w-full h-24 object-cover">
-							<button class="absolute top-2 right-2 bg-white hover:bg-gray-100 text-gray-800 p-1 rounded-full shadow-lg transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-6 w-6"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button>
+<?php if(empty($product['case_price']) or empty($product['unit_price'])){ ?>
+<button class="add_to_cart absolute top-2 right-2 bg-white hover:bg-gray-100 text-gray-800 p-1 rounded-full shadow-lg transition-colors" data-product_id="<?php echo $product['product_id'];?>" data-quantity="1" data-type="<?php echo $product['type'];?>">
+	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-6 w-6"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+</button>
+<?php };?>
 						</div>
 						
 						<div class="p-2 wrap_pr" data-view="p-2 flex-1 wrap_pr">
 							<h3 class="text-xs font-semibold text-gray-900 line-clamp-1"><?php echo $product['name'];?></h3>
-<p class="text-xs text-gray-600">Fruits</p>
+<?php if(!empty($product['category_name'])){ ?><p class="text-xs text-gray-600"><?php echo $product['category_name'];?></p><?php };?>
 							<div class="mt-2 flex flex-col gap-2 buttons_group" data-view="mt-2 flex items-center justify-between buttons_group">
-								<span class="text-xs font-bold text-[#022785]">$<?php echo $product['case_price'];?></span>
-								<a href="<?php echo $product['href'];?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground px-4 bg-[#022785] hover:bg-[#022785]/90 text-xs py-0.5 h-6">Details</a>
+<span class="text-xs font-bold text-[#022785]">$<?php echo $product['price'];?></span>
+								<a href="<?php echo $product['href'];?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground px-4 bg-[#022785] hover:bg-[#022785]/90 text-xs py-0.5 h-6">Details</a>
 							</div>
 						</div>
 					</div>
@@ -167,15 +178,19 @@ $(document).ready(function() {
 					if(json['products']){
 						
 						for(k in json['products']){
-html+= '<div class="p-2 hover:bg-gray-100 flex items-center justify-between gap-2 border-b border-gray-100 last:border-b-0"><a href="' + json['products'][k]['href'] +'" class="flex items-center gap-2 flex-1 cursor-pointer">';
-html+= '<img src="' + json['products'][k]['thumb'] +'" alt="' + json['products'][k]['name'] +'" class="w-8 h-8 object-cover rounded">';
-html+= '<div><p class="text-sm font-medium">' + json['products'][k]['name'] +'</p>';
-html+= '<div class="flex gap-2 text-xs text-gray-500">';
-html+= '<span>Unit: $' + json['products'][k]['unit_price'] +'</span>';
-html+= '<span>Case: $' + json['products'][k]['case_price'] +'</span>';
-html+= '</div></div></a>';
-html+= '<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 ml-2" data-product_id="' + json['products'][k]['product_id'] +'">Add to Cart</button>';
-html+= '</div>';
+							html+= '<div class="p-2 hover:bg-gray-100 flex items-center justify-between gap-2 border-b border-gray-100 last:border-b-0"><a href="' + json['products'][k]['href'] +'" class="flex items-center gap-2 flex-1 cursor-pointer">';
+							html+= '<img src="' + json['products'][k]['thumb'] +'" alt="' + json['products'][k]['name'] +'" class="w-8 h-8 object-cover rounded">';
+							html+= '<div><p class="text-sm font-medium">' + json['products'][k]['name'] +'</p>';
+							html+= '<div class="flex gap-2 text-xs text-gray-500">';
+							if(json['products'][k]['unit_price']!==0){
+							html+= '<span>Unit: $' + json['products'][k]['unit_price'] +'</span>';
+							}
+							if(json['products'][k]['case_price']!==0){
+							html+= '<span>Case: $' + json['products'][k]['case_price'] +'</span>';
+							}
+							html+= '</div></div></a>';
+html_hide= '<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 ml-2 add_to_cart" data-quantity="1" data-type="' + json['products'][k]['type'] + '" data-product_id="' + json['products'][k]['product_id'] +'">Add to Cart</button>';
+							html+= '</div>';
 						}
 						$('#result_search_suggest').removeClass('hide');
 					}else{

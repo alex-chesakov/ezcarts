@@ -2,6 +2,8 @@
 class ControllerCatalog extends Controller {
 	public function index() {
 		
+		if (!$this->customer->isLogged()) {$this->redirect($this->url->link('home', '', 'SSL'));}
+		
 		$this->load->model('tool/image'); 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -34,8 +36,8 @@ class ControllerCatalog extends Controller {
 		//	$product_total = $this->model_catalog_product->getTotalProducts($data); 
 
 		$sql = "SELECT * FROM " . DB_PREFIX . "product ";
-		if(!empty($this->session->data['location'])){
-			$sql.= "WHERE location LIKE '" . $this->db->escape(utf8_strtolower($this->session->data['location'])) . "'";
+		if(!empty($this->customer->getLocation())){	//	$this->customer->getLocation()	=	$this->session->data['location']
+			$sql.= "WHERE location LIKE '" . $this->db->escape(utf8_strtolower($this->customer->getLocation())) . "'";
 		}
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
@@ -47,12 +49,12 @@ class ControllerCatalog extends Controller {
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
 		$query = $this->db->query($sql);
-echo $this->session->data['location'];
+
 		foreach ($query->rows as $result) {
-			if ($result['image']) {
+			if ($result['image'] and file_exists(DIR_IMAGE  . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 			} else {
-				$image = false;
+				$image = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 			}
 
 			if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
@@ -77,13 +79,13 @@ echo $this->session->data['location'];
 			'common/column_right',
 			'common/content_top',
 			'common/content_bottom',
-			'common/footer'
+			'footer'
 		);
-$settings = array();
-$settings['type_header'] = 2;
-$settings['class_body'] = 'min-h-screen flex flex-col';
-		
-$this->data['header'] = $this->getChild('header',$settings);
-$this->response->setOutput($this->render());	
+		$settings = array();
+		$settings['type_header'] = 2;
+		$settings['class_body'] = 'min-h-screen flex flex-col';
+				
+		$this->data['header'] = $this->getChild('header',$settings);
+		$this->response->setOutput($this->render());	
 	}
 }

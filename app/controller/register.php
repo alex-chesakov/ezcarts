@@ -10,8 +10,8 @@ if ($this->customer->isLogged()) {$this->redirect($this->url->link('account', ''
 $this->language->load('account/register');
 
 $this->document->setTitle($this->language->get('heading_title'));
-		$this->document->addScript('view/javascript/jquery/colorbox/jquery.colorbox-min.js');
-		$this->document->addStyle('view/javascript/jquery/colorbox/colorbox.css');
+//		$this->document->addScript('view/javascript/jquery/colorbox/jquery.colorbox-min.js');
+//		$this->document->addStyle('view/javascript/jquery/colorbox/colorbox.css');
 
 		$this->load->model('account/customer');
 
@@ -22,10 +22,7 @@ $this->document->setTitle($this->language->get('heading_title'));
 
 			unset($this->session->data['guest']);
 
-
-
-
-//			$this->redirect($this->url->link('account/success'));
+			$this->redirect($this->url->link('profile'));
 		}
 $this->data['heading_title'] = $this->language->get('heading_title');
 $this->data['name'] = $this->config->get('config_name');
@@ -94,7 +91,7 @@ if (isset($this->request->post['telephone'])) {$this->data['telephone'] = $this-
 			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
 
 			if ($information_info) {
-				$this->data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information/info', 'information_id=' . $this->config->get('config_account_id'), 'SSL'), $information_info['title'], $information_info['title']);
+				$this->data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information', 'information_id=' . $this->config->get('config_account_id'), 'SSL'), $information_info['title'], $information_info['title']);
 			} else {
 				$this->data['text_agree'] = '';
 			}
@@ -112,7 +109,7 @@ if (isset($this->request->post['telephone'])) {$this->data['telephone'] = $this-
 			'common/column_right',
 			'common/content_top',
 			'common/content_bottom',
-			'common/footer'
+			'footer'
 		);
 $settings = array();
 $settings['type_header'] = 0;

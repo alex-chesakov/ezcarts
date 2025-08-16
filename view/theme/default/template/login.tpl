@@ -14,7 +14,7 @@
 				<div class="success"><?php echo $success; ?></div>
 			<?php } ?>
 			<?php if ($error_warning) { ?>
-				<div class="warning"><?php echo $error_warning; ?></div>
+				<div class="error_div"><?php echo $error_warning; ?></div>
 			<?php } ?>
 			
 			<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="space-y-6">
@@ -35,12 +35,12 @@
 					</div>
 				</div>
 				<div class="flex items-center justify-between">
-					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 underline-offset-4 hover:underline h-10 px-4 py-2 text-sm text-primary" type="button" onclick="location.href='<?php echo $register; ?>'">
+					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 underline-offset-4 hover:underline h-10 px-4 py-2 text-sm text-primary" type="button" onclick="location.href='<?php echo $register; ?>'">
 						<?php echo $text_register; ?>
 					</button>
-					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 underline-offset-4 hover:underline h-10 px-4 py-2 text-sm text-primary" type="button" onclick="location.href='<?php echo $forgotten; ?>'"><?php echo $text_forgotten; ?></button>
+					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 underline-offset-4 hover:underline h-10 px-4 py-2 text-sm text-primary" type="button" onclick="location.href='<?php echo $forgotten; ?>'"><?php echo $text_forgotten; ?></button>
 				</div>
-				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-[#022785] hover:bg-[#022785]/90" type="submit"><?php echo $button_login; ?>
+				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-[#022785] hover:bg-[#022785]/90" type="submit"><?php echo $button_login; ?>
 				</button>
 				<?php if ($redirect) { ?>
 					<input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />

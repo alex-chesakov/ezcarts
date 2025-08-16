@@ -12,7 +12,7 @@
 			<h2 class="text-center text-2xl font-bold text-gray-900 mb-8"><?php echo $heading_title; ?></h2>
 			
 			<?php if ($error_warning) { ?>
-				<div class="warning"><?php echo $error_warning; ?></div>
+				<div class="error_div"><?php echo $error_warning; ?></div>
 			<?php } ?>
 			
 			<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="space-y-6">
@@ -25,7 +25,7 @@
 				</div>
 
 
-				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-[#022785] hover:bg-[#022785]/90" type="submit"><?php echo $button_continue; ?>
+				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-[#022785] hover:bg-[#022785]/90" type="submit"><?php echo $button_continue; ?>
 				</button>
 	
 			</form>

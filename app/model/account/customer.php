@@ -1,25 +1,25 @@
 <?php
 class ModelAccountCustomer extends Model {
 	public function addCustomer($data) {
-		if (isset($data['customer_group_id']) && is_array($this->config->get('config_customer_group_display')) && in_array($data['customer_group_id'], $this->config->get('config_customer_group_display'))) {
-			$customer_group_id = $data['customer_group_id'];
-		} else {
-			$customer_group_id = $this->config->get('config_customer_group_id');
-		}
+/*	array(5) { 
+	["firstname"]=> string(8) "test" 
+	["telephone"]=> string(12) "+79012345678" 
+	["email"]=> string(13) "test@test2.ru" 
+	["password"]=> string(6) "123456" 
+	["agree"]=> string(1) "1" } 
+*/
 
-		$this->load->model('account/customer_group');
-
-		$customer_group_info = $this->model_account_customer_group->getCustomerGroup($customer_group_id);
-
-		$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET store_id = '" . (int)$this->config->get('config_store_id') . "', firstname = '" . $this->db->escape($data['firstname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', customer_group_id = '" . (int)$customer_group_id . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', approved = '" . (int)!$customer_group_info['approval'] . "', date_added = NOW()");
-
+		$sql = "INSERT INTO " . DB_PREFIX . "customer SET ";
+		$sql.= "firstname = '" . $this->db->escape($data['firstname']) . "', ";
+		$sql.= "email = '" . $this->db->escape($data['email']) . "', ";
+		$sql.= "telephone = '" . $this->db->escape($data['telephone']) . "', ";
+		$sql.= "salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', ";
+		$sql.= "password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', ";
+		$sql.= "ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', ";
+		$sql.= "status = '1', ";
+		$sql.= "date_added = NOW()";
+		$this->db->query($sql);
 		$customer_id = $this->db->getLastId();
-
-		$this->db->query("INSERT INTO " . DB_PREFIX . "address SET customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($data['firstname']) . "'");
-
-		$address_id = $this->db->getLastId();
-
-		$this->db->query("UPDATE " . DB_PREFIX . "customer SET address_id = '" . (int)$address_id . "' WHERE customer_id = '" . (int)$customer_id . "'");
 
 		$this->language->load('mail/customer');
 
@@ -87,7 +87,9 @@ class ModelAccountCustomer extends Model {
 	}
 
 	public function editPassword($email, $password) {
+		if(!empty($password) and !empty(trim($password))){
 		$this->db->query("UPDATE " . DB_PREFIX . "customer SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+		}
 	}
 
 	public function getCustomer($customer_id) {
@@ -98,7 +100,6 @@ class ModelAccountCustomer extends Model {
 
 	public function getCustomerByEmail($email) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
-
 		return $query->row;
 	}
 
@@ -129,10 +130,6 @@ class ModelAccountCustomer extends Model {
 
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
 			$implode[] = "c.status = '" . (int)$data['filter_status'] . "'";
-		}	
-
-		if (isset($data['filter_approved']) && !is_null($data['filter_approved'])) {
-			$implode[] = "c.approved = '" . (int)$data['filter_approved'] . "'";
 		}	
 
 		if (isset($data['filter_ip']) && !is_null($data['filter_ip'])) {

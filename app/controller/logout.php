@@ -3,26 +3,17 @@ class ControllerLogout extends Controller {
 	public function index() {
 		if ($this->customer->isLogged()) {
 			$this->customer->logout();
-			$this->cart->clear();
 
-			unset($this->session->data['wishlist']);
-			unset($this->session->data['shipping_address_id']);
-			unset($this->session->data['shipping_country_id']);
-			unset($this->session->data['shipping_zone_id']);
-			unset($this->session->data['shipping_postcode']);
+			unset($this->session->data['kitchen_id']);
+			unset($this->session->data['location']);
+			
 			unset($this->session->data['shipping_method']);
 			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_address_id']);
-			unset($this->session->data['payment_country_id']);
-			unset($this->session->data['payment_zone_id']);
 			unset($this->session->data['payment_method']);
 			unset($this->session->data['payment_methods']);
-			unset($this->session->data['comment']);
 			unset($this->session->data['order_id']);
-			unset($this->session->data['coupon']);
-			unset($this->session->data['reward']);			
-			unset($this->session->data['voucher']);
-			unset($this->session->data['vouchers']);
+			unset($this->session->data['language']);
+			
 
 			$this->redirect($this->url->link('logout', '', 'SSL'));
 		}
@@ -48,14 +39,14 @@ class ControllerLogout extends Controller {
 			'common/column_right',
 			'common/content_top',
 			'common/content_bottom',
-			'common/footer'
+			'footer'
 		);
-$settings = array();
-$settings['type_header'] = 0;
-$settings['class_body'] = 'min-h-screen bg-gray-50 flex flex-col';
-		
-$this->data['header'] = $this->getChild('header',$settings);
-$this->response->setOutput($this->render());	
+		$settings = array();
+		$settings['type_header'] = 0;
+		$settings['class_body'] = 'min-h-screen bg-gray-50 flex flex-col';
+				
+		$this->data['header'] = $this->getChild('header',$settings);
+		$this->response->setOutput($this->render());	
 		$this->response->setOutput($this->render());	
 	}
 }

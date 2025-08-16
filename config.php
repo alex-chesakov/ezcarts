@@ -1,5 +1,4 @@
-<?php
-//print_r($_SERVER);
+<?php 
 // HTTP
 define('HTTP_SERVER', 'http://litr-new/');
 
@@ -25,4 +24,3 @@ define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_DATABASE', 'litr');
 define('DB_PREFIX', 'l_');
-?>

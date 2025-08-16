@@ -2,6 +2,8 @@
 class User {
 	private $user_id;
 	private $username;
+	private $user_group_id;
+	private $user_group_name;
 	private $permission = array();
 
 	public function __construct($registry) {
@@ -15,11 +17,14 @@ class User {
 			if ($user_query->num_rows) {
 				$this->user_id = $user_query->row['user_id'];
 				$this->username = $user_query->row['username'];
+				$this->user_group_id = $user_query->row['user_group_id'];
 
 				$this->db->query("UPDATE " . DB_PREFIX . "user SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE user_id = '" . (int)$this->session->data['user_id'] . "'");
 
-				$user_group_query = $this->db->query("SELECT permission FROM " . DB_PREFIX . "user_group WHERE user_group_id = '" . (int)$user_query->row['user_group_id'] . "'");
+				$user_group_query = $this->db->query("SELECT name,permission FROM " . DB_PREFIX . "user_group WHERE user_group_id = '" . (int)$user_query->row['user_group_id'] . "'");
 
+				$this->user_group_name = $user_group_query->row['name'];
+				
 				$permissions = unserialize($user_group_query->row['permission']);
 
 				if (is_array($permissions)) {
@@ -79,12 +84,13 @@ class User {
 		return $this->user_id;
 	}
 
-	public function getId() {
-		return $this->user_id;
-	}
+	public function getId() {return $this->user_id;}
 
 	public function getUserName() {
 		return $this->username;
+	}
+	public function getGroupName(){
+		return $this->user_group_name;
 	}
 }
 ?>

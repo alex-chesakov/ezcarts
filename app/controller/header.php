@@ -2,6 +2,15 @@
 class ControllerHeader extends Controller {
 	protected function index($settings = array()) {
 		$this->data['class_body'] = '';
+
+		if(!empty($this->customer->getLocation())){	//	utf8_strtolower($this->customer->getLocation())
+			$location = trim($this->customer->getLocation());
+			$this->session->data['location'] = $location;
+		}elseif(!empty($this->session->data['location'])){
+			$location = trim($this->session->data['location']);
+		}else{
+			$location = false;
+		}
 		
 		$this->data['title'] = $this->document->getTitle();
 		
@@ -59,43 +68,46 @@ $this->data['text_signin'] = $this->language->get('text_signin');
 		$this->data['shopping_cart'] = $this->url->link('checkout/cart');
 		$this->data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
 
-$this->data['logged'] = $this->customer->isLogged();
-$this->data['profile'] = $this->url->link('profile', '', 'SSL');
+		$this->data['logged'] = $this->customer->isLogged();//	если загеран
+		$this->data['profile'] = $this->url->link('profile', '', 'SSL');//	линк до профиля
 
-//	кухни пользователя
-$this->data['my_kitchens'] = array();
-$this->data['my_kitchens_select'] = array();
-if($this->customer->isLogged()){
-	$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "my_kitchen WHERE customer_id = '" . (int)$this->customer->getId() . "'");
-	if($query->num_rows){
-		foreach($query->rows as $row){
-			$this->data['my_kitchens'][$row['kitchen_id']] = array(
-				'kitchen_id' => $row['kitchen_id'],
-				'name' => $row['name'],
-				'address' => $row['address']
-			);
-			if(!empty($this->session->data['kitchen_id']) and $this->session->data['kitchen_id'] == $row['kitchen_id']){
-				$this->data['my_kitchens_select'] = array(
-					'name' => $row['name'],
-					'address' => $row['address'],
-					'kitchen_id' => $row['kitchen_id']
-				);
-				$this->db->query("UPDATE " . DB_PREFIX . "customer SET kitchen_id = '" . (int)$row['kitchen_id'] . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+
+		$this->data['my_kitchens'] = array();
+		$this->data['my_kitchens_select'] = array();
+		if($this->customer->isLogged()){
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "my_kitchen WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+			if($query->num_rows){
+				foreach($query->rows as $row){
+					$this->data['my_kitchens'][$row['kitchen_id']] = array(
+						'kitchen_id' => $row['kitchen_id'],
+						'name' => $row['name'],
+						'address' => $row['address']
+					);
+					if(!empty($this->session->data['kitchen_id']) and $this->session->data['kitchen_id'] == $row['kitchen_id']){
+						$this->data['my_kitchens_select'] = array(
+							'name' => $row['name'],
+							'address' => $row['address'],
+							'kitchen_id' => $row['kitchen_id']
+						);
+						$this->db->query("UPDATE " . DB_PREFIX . "customer SET kitchen_id = '" . (int)$row['kitchen_id'] . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+					}
+				}
+			}
+
+			$sql = "SELECT SUM(cp.quantity) as tquantity FROM " . DB_PREFIX . "cart_products cp ";
+			$sql.= "LEFT JOIN " . DB_PREFIX . "cart c ON (c.cart_id = cp.cart_id) ";
+			$sql.= "WHERE c.customer_id = '" . (int)$this->customer->getId() . "' ";
+			if(!empty($location)){
+				$sql.= "AND cp.location LIKE '" . $this->db->escape($location) . "' ";
+			}
+			$query = $this->db->query($sql);
+			if($query->num_rows){
+				$this->data['total_cart'] = $query->row['tquantity'];
+			}else{
+				$this->data['total_cart'] = 0;
 			}
 		}
-	}
-	//	получаем количество товара в корзине
-	$sql = "SELECT SUM(cp.quantity) as tquantity FROM " . DB_PREFIX . "cart_products cp ";
-	$sql.= "LEFT JOIN " . DB_PREFIX . "cart c ON (c.cart_id = cp.cart_id) ";
-	$sql.= "WHERE c.customer_id = '" . (int)$this->customer->getId() . "' ";
-	$query = $this->db->query($sql);
-	if($query->num_rows){
-		$this->data['total_cart'] = $query->row['tquantity'];
-	}else{
-		$this->data['total_cart'] = 0;
-	}
-}
-$this->data['link_kitchen'] = $this->url->link('mykitchen');
+		$this->data['link_kitchen'] = $this->url->link('mykitchen');
 		// Daniel's robot detector
 		$status = true;
 
@@ -132,11 +144,9 @@ $this->data['link_kitchen'] = $this->url->link('mykitchen');
 		}
 
 		$this->children = array('module/setlocation',
-			'module/language',
-			'module/currency',
 			'module/cart'
 		);
-if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/header.tpl')) {$this->template = $this->config->get('config_template') . '/template/header.tpl';} else {$this->template = 'default/template/header.tpl';}
+		$this->template = 'default/template/header.tpl';
 		$this->render();
 	} 	
 }

@@ -73,7 +73,7 @@ $this->data['back'] = $this->url->link('login', '', 'SSL');
 			'common/column_right',
 			'common/content_top',
 			'common/content_bottom',
-			'common/footer'
+			'footer'
 		);
 $settings = array();
 $settings['type_header'] = 0;

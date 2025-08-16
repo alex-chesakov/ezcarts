@@ -3,12 +3,12 @@
 	<div class="container mx-auto px-4">
 		<div class="flex flex-col items-center space-y-4">
 			<div class="flex gap-6">
-				<a href="#" class="text-sm text-white hover:text-gray-200">Terms</a>
-				<a href="#" class="text-sm text-white hover:text-gray-200">Privacy</a>
-				<a href="#" class="text-sm text-white hover:text-gray-200">Contact</a>
+				<a href="<?php echo $info5;?>" class="text-sm text-white hover:text-gray-200">Terms</a>
+				<a href="<?php echo $info3;?>" class="text-sm text-white hover:text-gray-200">Privacy</a>
+				<a href="<?php echo $contact;?>" class="text-sm text-white hover:text-gray-200">Contact</a>
 			</div>
 			<div class="flex flex-col items-center gap-2">
-				<a href="/updates" class="text-sm text-white hover:text-gray-200 font-medium">Updates Center</a>
+				<a href="" class="text-sm text-white hover:text-gray-200 font-medium">Updates Center</a>
 				<div class="flex items-center gap-2">
 					<img src="/image/04eaabc3-a719-47f9-9047-2cc4d46e5a50.png" alt="Green leaf" class="w-6 h-6 object-contain">
 					<span class="text-sm text-white">0.5% of our revenue goes for carbon removal</span>
@@ -60,28 +60,28 @@
 </div>
 */	?>
 <!--
-<div  class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" style="pointer-events: auto;" data-aria-hidden="true" aria-hidden="true"></div>
+<div  class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" style="" data-aria-hidden="true" aria-hidden="true"></div>
 
-<div role="dialog" id="radix-:re:" data-state="open" class="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="pointer-events: auto;">
+<div role="dialog" id="radix-:re:" data-state="open" class="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="">
 	<div class="flex flex-col space-y-1.5 text-center sm:text-left">
 		<h2 id="radix-:rf:" class="text-lg font-semibold leading-none tracking-tight">Your Location</h2>
 		<p id="radix-:rg:" class="text-sm text-muted-foreground">Enter a city name or ZIP code to shop in the closest warehouse.</p>
 	</div>
 	<div class="flex gap-2 mt-4">
 		<input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm flex-1" placeholder="Enter City or Zip" value="">
-			<button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="149" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">Search</button>
+			<button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="149" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">Search</button>
 	</div>
-	<div data-component-path="src/components/location/LocationPicker.tsx" data-component-name="div" data-component-line="153" data-component-file="LocationPicker.tsx" data-component-content="%7B%22className%22%3A%22mt-4%20space-y-2%22%7D" class="mt-4 space-y-2"><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">San Jose</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Concord</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Oakland</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Daly City</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">San Francisco</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Fresno</button></div>
-	<button type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4" data-component-path="src/components/ui/dialog.tsx" data-component-name="X" data-component-line="46" data-component-file="dialog.tsx" data-component-content="%7B%22className%22%3A%22h-4%20w-4%22%7D"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg><span data-component-path="src/components/ui/dialog.tsx" data-component-name="span" data-component-line="47" data-component-file="dialog.tsx" data-component-content="%7B%22text%22%3A%22Close%22%2C%22className%22%3A%22sr-only%22%7D" class="sr-only">Close</span></button>
+	<div data-component-path="src/components/location/LocationPicker.tsx" data-component-name="div" data-component-line="153" data-component-file="LocationPicker.tsx" data-component-content="%7B%22className%22%3A%22mt-4%20space-y-2%22%7D" class="mt-4 space-y-2"><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">San Jose</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Concord</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Oakland</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Daly City</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">San Francisco</button><button data-component-path="src/components/location/LocationPicker.tsx" data-component-name="Button" data-component-line="164" data-component-file="LocationPicker.tsx" data-component-content="%7B%7D" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">Fresno</button></div>
+	<button type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2  data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4" data-component-path="src/components/ui/dialog.tsx" data-component-name="X" data-component-line="46" data-component-file="dialog.tsx" data-component-content="%7B%22className%22%3A%22h-4%20w-4%22%7D"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg><span data-component-path="src/components/ui/dialog.tsx" data-component-name="span" data-component-line="47" data-component-file="dialog.tsx" data-component-content="%7B%22text%22%3A%22Close%22%2C%22className%22%3A%22sr-only%22%7D" class="sr-only">Close</span></button>
 </div>
 -->	
 </div>
 
-<?php /*	ТИП ЗАГОЛОВКА 2 => авторизован */	?>
+<?php /*	type head 2 => auth */	?>
 <?php if($this->customer->isLogged()){ ?>
 <div class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 overlay_rm"></div>
 
-<div id="radix-:r7:" class="fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm w-[300px] right_menu" style="pointer-events: auto;">
+<div id="radix-:r7:" class="fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm w-[300px] right_menu" style="">
 	<div class="flex flex-col space-y-2 text-center sm:text-left">
 		<h2 id="radix-:r8:" class="text-lg font-semibold text-foreground">Your Account</h2>
 	</div>
@@ -89,12 +89,12 @@
 	<div class="flex flex-col h-full">
 		<div class="flex-1 py-4">
 			<div class="space-y-4">
-				<a href="<?php echo $go_profile;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
+				<a href="<?php echo $go_profile;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user mr-2 h-5 w-5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
 Profile
 				</a>
 				
-				<a href="<?php echo $go_mykitchen;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
+				<a href="<?php echo $go_mykitchen;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chef-hat mr-2 h-5 w-5">
 						<path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"></path>
 						<path d="M6 17h12"></path>
@@ -102,14 +102,14 @@ Profile
 My Kitchens
 				</a>
 				
-				<a href="<?php echo $go_orderhistory;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
+				<a href="<?php echo $go_orderhistory;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history mr-2 h-5 w-5">
 						<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path>
 					</svg>
 Order History
 				</a>
 				
-				<a href="<?php echo $go_shoppinglist;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
+				<a href="<?php echo $go_shoppinglist;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-todo mr-2 h-5 w-5">
 						<rect x="3" y="5" width="6" height="6" rx="1"></rect><path d="m3 17 2 2 4-4"></path><path d="M13 6h8"></path><path d="M13 12h8"></path><path d="M13 18h8"></path>
 					</svg>
@@ -122,12 +122,12 @@ Shopping List
 		
 		<div class="py-4 space-y-4">
 <?php /*
-			<button class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
+			<button class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user mr-2 h-5 w-5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
 Sign Up
 			</button>*/	?>
 			
-			<a href="<?php echo $go_logout;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 w-full justify-start text-red-500 hover:text-red-500 hover:bg-red-50">
+			<a href="<?php echo $go_logout;?>" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 w-full justify-start text-red-500 hover:text-red-500 hover:bg-red-50">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out mr-2 h-5 w-5">
 					<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line>
 				</svg>
@@ -136,7 +136,7 @@ Log Out
 		</div>
 	</div>
 	
-	<button type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary close">
+	<button type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2  data-[state=open]:bg-secondary close">
 		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4">
 			<path d="M18 6 6 18"></path>
 		<path d="m6 6 12 12"></path></svg>
@@ -144,72 +144,114 @@ Log Out
 	</button>
 </div>
 
-<div id="modal_mini_cart" class="fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm">
-	<div class="flex flex-col h-full" id="load_mini_cart">
-		<div class="flex flex-col space-y-2 text-center sm:text-left">
-			<h2 id="radix-:r4:" class="text-lg font-semibold text-foreground">Cart</h2>
-		</div>
-		<div dir="ltr" class="relative overflow-hidden flex-1 mt-8 pr-4" style="position: relative; --radix-scroll-area-corner-width:0px; --radix-scroll-area-corner-height:0px;">
-<style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}
-</style>
-			<div class="h-full w-full rounded-[inherit]" style="overflow: hidden scroll;">
-				<div style="min-width: 100%; display: table;">
-					<div class="space-y-4">
-					
-						<div class="flex items-start gap-4">
-							<div class="flex-1 flex gap-4">
-								<img src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Fresh Organic Apples" class="w-16 h-16 object-cover rounded">
-								<div>
-									<h3 class="font-medium">Fresh Organic Apples</h3>
-									<p class="text-sm text-gray-500">Unit</p>
-									<div class="flex items-center gap-3 mt-2">
-										<button class="p-1 hover:bg-gray-100 rounded" disabled="">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus h-4 w-4"><path d="M5 12h14"></path></svg>
-										</button>
-										<span class="text-sm font-medium w-8 text-center">1</span>
-										<button class="p-1 hover:bg-gray-100 rounded">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-4 w-4"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button>
-									</div>
-									<p class="text-sm font-medium mt-1">$4.99</p>
-								</div>
-							</div>
-								
-							<button class="p-1 hover:bg-gray-100 rounded">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 h-5 w-5 text-gray-500"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>
-							</button>
-						</div>
+<?php echo $cart;?>
 
-								
-					</div>
-				</div>
-			</div>
-		</div>
-				
-		<div class="mt-auto pt-6 border-t">
-			<div class="space-y-4">
-				<div class="flex justify-between font-medium">
-					<span >Total</span>
-					
-					<span>$38.70</span>
-				</div>
-				
-				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-[#022785] hover:bg-[#022785]/90">Go to Checkout</button>
-			</div>
-		</div>
-	</div>
-	<button type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-		<span class="sr-only">Close</span>
-	</button>
-</div>
+<?php if(isset($approved_location) and $approved_location == 0 and (!empty($name_e) or !empty($address_s))){ ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIq1K4QubCQQJIJiQbQXBAi38Ga08--rs&callback=initMap" async defer></script>
+<script type="text/javascript"><!--
+<?php /*console.log('lat=' + encodeURIComponent(position.coords.latitude) + '&lng=' + encodeURIComponent(position.coords.longitude));*/	?>
+var notif_notif;
+
+
+function initMap(){
+	address = "<?php if(!empty($address_s)){ echo $address_s;}else{ echo $name_e;};?>";
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ address: address }, function(results, status) {
+		if (status === 'OK') {
+			const location = results[0].geometry.location;
+
+					$.ajax({
+						url: 'index.php?route=geogoogle',
+						type: 'post',
+						data: 'lat=' + encodeURIComponent(location.lat()) + '&lng=' + encodeURIComponent(location.lng()),
+						dataType: 'json',
+						success: function(json) {
+console.log('result geogoogle');
+							if(!json['distance']){
+								$('body').append('<section aria-label="Notifications alt+T" tabindex="-1" id="notif"><ol dir="ltr" tabindex="-1" class="toaster group" style="--front-toast-height:53.5px; --offset:32px; --width:356px; --gap:14px;"><li class="flex group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg"><div class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="20" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg></div><div class=""><div class="">We have not identified the nearest point to you.<br/>Select it manually.</div></div></li></ol></section>');
+							}else{
+								$('body').append('<section aria-label="Notifications alt+T" tabindex="-1" id="notif"><ol dir="ltr" tabindex="-1" class="toaster group" style="--front-toast-height:53.5px; --offset:32px; --width:356px; --gap:14px;"><li class="flex group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg"><div class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="20" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg></div><div class=""><div class="">We have identified the nearest point to you as ' + json['location'] + '</div></div></li></ol></section>');
+								$('#select_location').html('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin h-4 w-4"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> ' + json['location']);
+window.location.reload();
+							}
+							notif_notif = setTimeout(function(){
+								$('#notif').remove();
+							},5000);
+						}
+					});
+		} else {
+			$('body').append('<section aria-label="Notifications alt+T" tabindex="-1" id="notif"><ol dir="ltr" tabindex="-1" class="toaster group" style="--front-toast-height:53.5px; --offset:32px; --width:356px; --gap:14px;"><li class="flex group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg"><div class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="20" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg></div><div class=""><div class="">' + status + '</div></div></li></ol></section>');
+			notif_notif = setTimeout(function(){
+				$('#notif').remove();
+			},5000);
+
+		}
+    });
+}
+
+
+
+
+<?php /*
+    let map;
+    function initMap() {
+		$('#notif').remove();
+		clearTimeout(notif_notif);
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					const pos = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude,
+					};
+					$.ajax({
+						url: 'index.php?route=geogoogle',
+						type: 'post',
+						data: 'lat=' + encodeURIComponent(position.coords.latitude) + '&lng=' + encodeURIComponent(position.coords.longitude),
+						dataType: 'json',
+						success: function(json) {
+							if(!json['distance']){
+								$('body').append('<section aria-label="Notifications alt+T" tabindex="-1" id="notif"><ol dir="ltr" tabindex="-1" class="toaster group" style="--front-toast-height:53.5px; --offset:32px; --width:356px; --gap:14px;"><li class="flex group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg"><div class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="20" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg></div><div class=""><div class="">We have not identified the nearest point to you.<br/>Select it manually.</div></div></li></ol></section>');
+							}else{
+								$('body').append('<section aria-label="Notifications alt+T" tabindex="-1" id="notif"><ol dir="ltr" tabindex="-1" class="toaster group" style="--front-toast-height:53.5px; --offset:32px; --width:356px; --gap:14px;"><li class="flex group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg"><div class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="20" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg></div><div class=""><div class="">We have identified the nearest point to you as ' + json['location'] + '</div></div></li></ol></section>');
+							}
+							notif_notif = setTimeout(function(){
+								$('#notif').remove();
+							},5000);
+						}
+					});
+				},
+				() => {
+					handleLocationError(true);
+				}
+			);
+		} else {
+			// Browser doesn't support Geolocation
+			handleLocationError(false);
+		}
+    }
+    function handleLocationError(browserHasGeolocation) {
+		let message = browserHasGeolocation
+			? "Error: geo not work."
+			: "Error: Browser not support geo.";
+			$('body').append('<section aria-label="Notifications alt+T" tabindex="-1" id="notif"><ol dir="ltr" tabindex="-1" class="toaster group" style="--front-toast-height:53.5px; --offset:32px; --width:356px; --gap:14px;"><li class="flex group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg"><div class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="20" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg></div><div class=""><div class="">We have identified the nearest point to you as ' + message + '</div></div></li></ol></section>');
+			notif_notif = setTimeout(function(){
+				$('#notif').remove();
+			},5000);
+    }
+*/	?>
+//--></script>
+
+<?php };?>
 
 <script type="text/javascript"><!--
 $(document).ready(function() {
-	$('#button_open_right_menu').on("click",function(){
+	$('#button_open_right_menu').live("click",function(){
 		$('.overlay_rm').addClass('visible');
 		$('.right_menu').addClass('visible');
 	});
-	$('.right_menu .close').on("click",function(){
+	$('.right_menu .close').live("click",function(){
 		$('.overlay_rm').removeClass('visible');
 		$('.right_menu').removeClass('visible');
 	});
@@ -222,26 +264,11 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#open_mini_cart').on("click",function(){
-		$('#modal_mini_cart').toggleClass('visible');
-	});
-	
 });
 //--></script>
 <?php };?>
 
 
 
-<?php 
-/*
-?>
-<?php 
-echo 'customer_id = ' . (int)$this->customer->getId() . "\n";
 
-?>
-Рабочие БД:<br/>
-l_my_kitchen <br/>
-<?php 
-*/ 
-?>
 </body></html>

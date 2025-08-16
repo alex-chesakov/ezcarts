@@ -1,58 +1,121 @@
 <?php echo $header; ?>
 
 <div class="flex items-center mb-8">
-	<a href="<?php echo $go_back;?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 mr-4">
+	<a href="<?php echo $go_back;?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 mr-4">
 		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left h-6 w-6"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
 	</a>
 	<h1 class="text-2xl font-bold"><?php echo $heading_title;?></h1></div>
-
-	<div class="space-y-6">
-		<div class="rounded-lg border bg-card text-card-foreground shadow-sm">
-			<div class="flex flex-col space-y-1.5 p-6">
-<h3 class="text-2xl font-semibold leading-none tracking-tight">Personal Information</h3>
-			</div>
 			
-			<div class="p-6 pt-0 space-y-4">
-				<div class="space-y-2">
-					<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="fullName">Full Name</label>
-					<input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="fullName" placeholder="John Doe" value="<?php echo $this->customer->getFirstName();?>" name="firstname">
+	<div class="space-y-6">
+		<form action="<?php echo $action; ?>" class="space-y-6" method="post" enctype="multipart/form-data" id="profform">
+			<div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+				<div class="flex flex-col space-y-1.5 p-6">
+	<h3 class="text-2xl font-semibold leading-none tracking-tight">Personal Information</h3>
 				</div>
-				
-				<div class="space-y-2">
-					<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email</label>
-					<input type="email" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="email" placeholder="john@example.com" value="<?php echo $this->customer->getEmail();?>" name="email">
-				</div>
-				
-				<div class="space-y-2">
-					<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="phone">Phone Number</label>
-					<input type="tel" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="phone" placeholder="+1 (555) 000-0000" value="<?php echo $this->customer->getTelephone();?>" name="telephone">
+				<?php if ($error_warning) { ?>
+					<div class="p-6 pt-0 space-y-4"><div class="warning"><?php echo $error_warning; ?></div></div>
+				<?php } ?>
+				<?php if (!empty($success)){ ?>
+					<div class="p-6 pt-0 space-y-4"><div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div></div>
+				<?php } ?>
+				<div class="p-6 pt-0 space-y-4">
+					<div class="space-y-2">
+						<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="fullName">Full Name</label>
+						<input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="fullName" placeholder="John Doe" value="<?php echo $this->customer->getFirstName();?>" name="firstname">
+					</div>
+<?php /*
+					<div class="space-y-2">
+						<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email</label>
+						<div class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="email"><?php echo $this->customer->getEmail();?></div>
+					</div>
+*/	?>
+					<div class="space-y-2">
+						<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="phone">Phone Number</label>
+						<input type="tel" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="phone" placeholder="+1 (555) 000-0000" value="<?php echo $this->customer->getTelephone();?>" name="telephone">
+					</div>
 				</div>
 			</div>
-		</div>
 		
-		<div class="rounded-lg border bg-card text-card-foreground shadow-sm">
-			<div class="flex flex-col space-y-1.5 p-6">
-				<h3 class="text-2xl font-semibold leading-none tracking-tight">Security</h3>
+			<div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+				<div class="flex flex-col space-y-1.5 p-6">
+					<h3 class="text-2xl font-semibold leading-none tracking-tight">Security</h3>
+				</div>
+				<div class="p-6 pt-0">
+					<label class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2" for="change_password">Reset Password</label>
+					<input type="checkbox" name="change_password" value="1" class="hidden" id="change_password"/>
+					<div class="block_change_password">
+						<div class="space-y-2">
+							<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="password">New Password</label>
+							<input type="text" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="password" placeholder="*******" value="" name="new_password">
+						</div>
+					</div>
+				</div>
+				<div class="p-6 pt-0">
+					<button type="button" id="submitprofile" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&_svg]:size-4 [&_svg]:shrink-0 text-primary-foreground px-4 bg-[#022785] hover:bg-[#022785]/90 text-xs py-0.5 h-6">Save</button>
+				</div>
 			</div>
-			<div class="p-6 pt-0">
-				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Reset Password</button>
-			</div>
-		</div>
-		
+		</form>
 		<div class="rounded-lg border bg-card text-card-foreground shadow-sm">
 			<div class="flex flex-col space-y-1.5 p-6">
 				<h3 class="text-2xl font-semibold leading-none tracking-tight">Payment Methods</h3>
 				<p class="text-sm text-muted-foreground">Manage your payment methods and set your primary payment option</p>
 			</div>
 			
+
+				
 			<div class="p-6 pt-0 space-y-4">
+			
 				<div class="flex justify-between items-center">
-					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mr-2">
+					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mr-2" id="addcardstripe">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card mr-2 h-4 w-4"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
 						Add Credit Card
 					</button>
 					
-					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2" id="default_payment_m_info">
+						<?php if(!empty($info_stripe)){ ?>
+							<div class="alert"><?php echo $info_stripe;?></div>
+						<?php };?>
+					</button>
+				</div>
+				
+<div id="card_in_stripe" class="space-y-4">
+				<?php if(!empty($paymentMethods)){ ?>
+					<?php foreach($paymentMethods->data as $pm){ ?>
+						<label class="flex items-center justify-between p-4 border rounded-lg stripe_cards_profile">
+							<input type="radio" name="p_m" value="<?php echo $pm->id;?>" <?php if(!empty($default_pm) and $default_pm == $pm->id){ ?>checked<?php };?>/>
+							<div class="flex items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card mr-2 h-4 w-4"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+								<div>
+									<p class="font-medium"><?php echo $pm->{$pm->type}->funding;?> <?php echo $pm->type ;?> <?php echo $pm->{$pm->type}->display_brand;?></p>
+									<p class="text-sm text-gray-500">ending in <?php echo $pm->{$pm->type}->last4;?></p>
+								</div>
+							</div>
+							<div class="flex items-center gap-2">
+								<span class="text-sm text-primary primar">Primary</span>
+								<div class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50 [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 notprimar">Set as Primary</div>
+							</div>
+						</label>
+					<?php };?>
+				<?php };?>
+</div>
+<form id="payment-form" style="display:none;">
+<div class="space-y-4" id="strip_data">
+
+</div>
+<div id="error-message">
+		<!-- Display error message to your customers here -->
+</div>
+<button type="button" id="submitstripe" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&_svg]:size-4 [&_svg]:shrink-0 text-primary-foreground px-4 bg-[#022785] hover:bg-[#022785]/90 text-xs py-0.5 h-6">Save</button>
+</form>
+			</div>
+<?php /*
+				<div class="flex justify-between items-center">
+					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mr-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card mr-2 h-4 w-4"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+						Add Credit Card
+					</button>
+					
+					<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-landmark mr-2 h-4 w-4"><line x1="3" x2="21" y1="22" y2="22"></line><line x1="6" x2="6" y1="18" y2="11"></line><line x1="10" x2="10" y1="18" y2="11"></line><line x1="14" x2="14" y1="18" y2="11"></line><line x1="18" x2="18" y1="18" y2="11"></line><polygon points="12 2 20 7 4 7"></polygon></svg>
 						Add ACH Account
 					</button>
@@ -82,18 +145,22 @@
 							</div>
 						</div>
 						<div class="flex items-center gap-2">
-							<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3">Set as Primary</button>
+							<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3">Set as Primary</button>
 						</div>
 					</div>
+					
 				</div>
+<?php */	?>
 			</div>
+		</div>
+		
+		<div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+		
 		</div>
 	</div>
 
 <?php /*
-<?php if ($success) { ?>
-<div class="success"><?php echo $success; ?></div>
-<?php } ?>
+
 <?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content"><?php echo $content_top; ?>
   <div class="breadcrumb">
@@ -132,4 +199,95 @@
   </div>
   <?php echo $content_bottom; ?></div>
 */	?>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<?php /*<script src="https://js.stripe.com/basil/stripe.js"></script>*/	?>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+
+$(document).ready(function() {
+	$('input[name=p_m]').live("change",function(){
+		$.ajax({
+			url: 'index.php?route=profile/changepm',
+			type: 'post',
+			data: 'pm=' + $(this).val(),
+			dataType: 'json',
+			success: function(json) {
+				if(json['default_payment_method']){
+					$('#default_payment_m_info').load('/index.php?route=profile #default_payment_m_info > *');
+				}
+
+			}
+		});
+	});
+	
+	$('#addcardstripe').live("click",function(){
+		if($('#payment-form').is(':visible')){
+			$('#card_in_stripe').slideDown();
+			$('#payment-form').slideUp();
+		}else{
+			$('#card_in_stripe').slideUp();
+			$('#payment-form').slideDown();
+			if($('#strip_data').hasClass('StripeElement')){
+
+			}else{
+console.log('Stripe ini');
+				const stripe = Stripe('<?php echo trim($stripe_public_key);?>');
+
+				let elements;
+
+				(async () => {
+					const res = await fetch('index.php?route=profile/intent');
+					const { clientSecret } = await res.json();
+
+					elements = stripe.elements({ clientSecret });
+					const paymentElement = elements.create('payment');
+					paymentElement.mount('#strip_data');
+
+					document.getElementById('submitstripe').addEventListener('click', async (event) => {
+						event.preventDefault();
+						const { error } = await stripe.confirmSetup({
+							elements,
+							confirmParams: {
+								return_url: '<?php echo HTTPS_SERVER;?>index.php?route=profile/returnstripe',
+							},
+						});
+
+						if (error) {
+							alert('Error: ' + error.message);
+						}
+					});
+
+				})();
+			}
+		}
+	});
+});
+
+
+
+
+</script>
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$("#submitprofile").on("click",function(){
+		var formData = $('#profform').serialize();
+
+		$.post( "/index.php?route=profile/update&ajax=1", formData, function( json ) {
+
+			if(json['success']){
+
+$('body').append('<section aria-label="Notifications alt+T" tabindex="-1" id="notif"><ol dir="ltr" tabindex="-1" class="toaster group" style="--front-toast-height:53.5px; --offset:32px; --width:356px; --gap:14px;"><li class="flex group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg"><div class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="20" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg></div><div class=""><div class="">' + json['success'] + '</div></div></li></ol></section>');
+						notif_wish = setTimeout(function(){
+							$('#notif').remove();
+						},3000);
+			}
+		}, 'json');
+	});
+});
+//--></script> 
 <?php echo $footer; ?> 

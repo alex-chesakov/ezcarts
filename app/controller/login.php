@@ -10,51 +10,19 @@ $this->load->model('account/customer');
 			$this->customer->logout();
 			$this->cart->clear();
 
-			unset($this->session->data['wishlist']);
-			unset($this->session->data['shipping_address_id']);
-			unset($this->session->data['shipping_country_id']);
-			unset($this->session->data['shipping_zone_id']);
-			unset($this->session->data['shipping_postcode']);
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_address_id']);
-			unset($this->session->data['payment_country_id']);
-			unset($this->session->data['payment_zone_id']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
-			unset($this->session->data['comment']);
-			unset($this->session->data['order_id']);
-			unset($this->session->data['coupon']);
-			unset($this->session->data['reward']);
-			unset($this->session->data['voucher']);
-			unset($this->session->data['vouchers']);
-
 			$customer_info = $this->model_account_customer->getCustomerByToken($this->request->get['token']);
 
 			if ($customer_info && $this->customer->login($customer_info['email'], '', true)) {
 				// Default Addresses
 				$this->load->model('account/address');
 
-				$address_info = $this->model_account_address->getAddress($this->customer->getAddressId());
 
-				if ($address_info) {
-					if ($this->config->get('config_tax_customer') == 'shipping') {
-						$this->session->data['shipping_country_id'] = $address_info['country_id'];
-						$this->session->data['shipping_zone_id'] = $address_info['zone_id'];
-						$this->session->data['shipping_postcode'] = $address_info['postcode'];	
-					}
-
-					if ($this->config->get('config_tax_customer') == 'payment') {
-						$this->session->data['payment_country_id'] = $address_info['country_id'];
-						$this->session->data['payment_zone_id'] = $address_info['zone_id'];
-					}
-				} else {
 					unset($this->session->data['shipping_country_id']);	
 					unset($this->session->data['shipping_zone_id']);	
 					unset($this->session->data['shipping_postcode']);
 					unset($this->session->data['payment_country_id']);	
 					unset($this->session->data['payment_zone_id']);	
-				}
+				
 
 				$this->redirect($this->url->link('profile', '', 'SSL')); 
 			}
@@ -70,8 +38,6 @@ $this->load->model('account/customer');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			unset($this->session->data['guest']);
-
-
 
 			// Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
 			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
@@ -143,24 +109,22 @@ $this->data['back'] = $this->url->link('login', '', 'SSL');
 			'common/column_right',
 			'common/content_top',
 			'common/content_bottom',
-			'common/footer'
+			'footer'
 		);
-$settings = array();
-$settings['type_header'] = 0;
-$settings['class_body'] = 'min-h-screen bg-gray-50 flex flex-col';
-		
-$this->data['header'] = $this->getChild('header',$settings);
-$this->response->setOutput($this->render());
+		$settings = array();
+		$settings['type_header'] = 0;
+		$settings['class_body'] = 'min-h-screen bg-gray-50 flex flex-col';
+				
+		$this->data['header'] = $this->getChild('header',$settings);
+		$this->response->setOutput($this->render());
 	}
 
 	protected function validate() {
+
 		if (!$this->customer->login($this->request->post['email'], $this->request->post['password'])) {
 			$this->error['warning'] = $this->language->get('error_login');
 		}
-		$customer_info = $this->model_account_customer->getCustomerByEmail($this->request->post['email']);
-		if ($customer_info && !$customer_info['approved']) {
-			$this->error['warning'] = $this->language->get('error_approved');
-		}
+
 		if (!$this->error) {
 			return true;
 		} else {

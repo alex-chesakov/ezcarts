@@ -2,9 +2,10 @@
 class ControllerHome extends Controller {
 	public function index() {
 		if ($this->customer->isLogged()) {$this->redirect($this->url->link('shop', '', 'SSL'));}
+		
+		//	meta data
 		$this->document->setTitle($this->config->get('config_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
-
 		$this->data['heading_title'] = $this->config->get('config_title');
 			
 		
@@ -14,14 +15,14 @@ class ControllerHome extends Controller {
 			'common/column_right',
 			'common/content_top',
 			'common/content_bottom',
-			'common/footer'
+			'footer'
 		);
 		$settings = array();
 		if($this->customer->isLogged()){
-			$settings['type_header'] = 2;//	особый header
+			$settings['type_header'] = 2;
 			$settings['class_body'] = '';
 		}else{
-			$settings['type_header'] = 1;//	обычный короткий header
+			$settings['type_header'] = 1;
 			$settings['class_body'] = 'min-h-screen bg-white';
 		}
 		$this->data['header'] = $this->getChild('header',$settings);

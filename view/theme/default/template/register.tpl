@@ -11,7 +11,7 @@
 
 			<h2 class="text-center text-2xl font-bold text-gray-900 mb-8"><?php echo $heading_title;?></h2>
 <?php if ($error_warning) { ?>
-<div class="warning"><?php echo $error_warning; ?></div>
+<div class="error_div"><?php echo $error_warning; ?></div>
 <?php } ?>
 			<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="space-y-6">
 				<div class="space-y-2">
@@ -64,17 +64,17 @@
 							<div class="flex items-center space-x-2">
 								
 								<?php if ($agree) { ?>
-									<input type="checkbox" name="agree" value="1" checked="checked" style="transform: translateX(-100%); position: absolute; pointer-events: none; opacity: 0; margin: 0px; width: 16px; height: 16px;" id="terms"/>
+									<input type="checkbox" name="agree" value="1" checked="checked" style="margin: 0px; width: 16px; height: 16px;" id="terms"/>
 								<?php } else { ?>
-									<input type="checkbox" name="agree" value="1" style="transform: translateX(-100%); position: absolute; pointer-events: none; opacity: 0; margin: 0px; width: 16px; height: 16px;" id="terms"/>
+									<input type="checkbox" name="agree" value="1" style="margin: 0px; width: 16px; height: 16px;" id="terms"/>
 								<?php } ?>
-								<label class="peer h-4 w-4 shrink-0 rounded-sm border ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground border-primary" for="terms"></label>
+								<?php /*<label class="peer h-4 w-4 shrink-0 rounded-sm border ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground border-primary" for="terms"></label>*/	?>
 								<label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm" for="terms"><?php echo $text_agree; ?></label>
 							</div>
 						</div>
 					</div>
 				<?php } ?>
-				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-[#022785] hover:bg-[#022785]/90" type="submit">Sign Up</button>
+				<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2  disabled:opacity-50  [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-[#022785] hover:bg-[#022785]/90" type="submit">Sign Up</button>
 			</form>
 		</div>
 	</div>

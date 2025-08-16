@@ -19,21 +19,69 @@ class ControllerModuleSetlocation extends Controller {
 		$json = array();
 		if($location = $this->validate()) {
 			$this->session->data['location'] = $location;
+			$this->db->query("UPDATE " . DB_PREFIX . "customer SET location = '" . $this->db->escape(trim($location)) . "', approved_location = '1' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+			
 			$json['location'] = $location;
 			$json['redirect'] = $this->url->link("home");
+
+			$query = $this->db->query("SELECT cart_id FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+			if($query->num_rows){
+	
+				$this->db->query("DELETE FROM " . DB_PREFIX . "cart_products WHERE cart_id = '" . (int)$query->row['cart_id'] . "' AND location NOT LIKE '" . $this->db->escape($location) . "'");
+				
+			
+				$query_p = $this->db->query("SELECT product_id FROM " . DB_PREFIX . "cart_products WHERE cart_id = '" . (int)$query->row['cart_id'] . "'");
+				if(!$query_p->num_rows){
+				
+					$this->db->query("DELETE FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+		
+					$query = $this->db->query("SELECT cart_id FROM " . DB_PREFIX . "cart ORDER BY cart_id DESC LIMIT 1");
+					if($query->num_rows){
+						$cart_id = $query->row['cart_id'];
+						$cart_id = $cart_id +1;
+					}else{
+						$cart_id = 0;
+					}
+					$this->db->query("ALTER TABLE `" . DB_PREFIX . "cart` AUTO_INCREMENT = " . (int)$cart_id);
+				}
+				
+			}
 		}
 		$this->response->setOutput(json_encode($json));
 	}
 	protected function index($setting = array()) {
-		//	проверяем на авторизацию
+		
 		if ($this->customer->isLogged()) {
+			
+			if(!empty($this->customer->getLocation())){	//	utf8_strtolower($this->customer->getLocation())
+				$location = trim($this->customer->getLocation());
+				$this->session->data['location'] = $location;
+			}elseif(!empty($this->session->data['location'])){
+				$location = trim($this->session->data['location']);
+			}else{
+				$location = false;
+			}
+
 			if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-				$this->session->data['location'] = $this->request->get['location'];
+				$this->session->data['location'] = trim($this->request->get['location']);
+				$location = trim($this->request->get['location']);
+				$this->db->query("UPDATE " . DB_PREFIX . "customer SET location = '" . $this->db->escape(trim($location)) . "', approved_location = '1' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+			}
+			$this->data['cart_locations'] = array();
+
+			$sql = "SELECT cp.location AS location FROM " . DB_PREFIX . "cart_products cp ";
+			$sql.= "LEFT JOIN " . DB_PREFIX . "cart c ON (c.cart_id = cp.cart_id) ";
+			$sql.= "WHERE c.customer_id = '" . (int)$this->customer->getId() . "' ";
+			$query = $this->db->query($sql);
+			if($query->num_rows){
+				foreach($query->rows as $row){
+					$this->data['cart_locations'][$row['location']] = $row['location'];
+				}
 			}
 			
 			$this->data['locations'] = array();
 			$this->data['location'] = '';
-			//	выбираем товары с локализацией и группируем их для вывода
+		
 			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product GROUP BY location ORDER BY location ASC");//	WHERE code = '" . $this->db->escape($currency) . "'
 			if($query->num_rows){
 				foreach($query->rows as $row){
@@ -42,21 +90,25 @@ class ControllerModuleSetlocation extends Controller {
 					}
 				}
 				
-				if(empty($this->session->data['location'])){
+				if(empty($location)){
 					$this->data['location'] = reset($this->data['locations']);
-					$this->session->data['location'] = $this->data['location'];
+					
+					$location = trim($this->data['location']);
+					$this->session->data['location'] = $location;
+					
 					if($this->customer->isLogged()){
-						$this->db->query("UPDATE " . DB_PREFIX . "customer SET location = '" . $this->db->escape($this->data['location']) . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+						$this->db->query("UPDATE " . DB_PREFIX . "customer SET location = '" . $this->db->escape($location) . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
 					}
 				}
 
 			}
 
-			if(!empty($this->session->data['location']) and !empty($this->data['locations'][trim($this->session->data['location'])])){
-				$this->data['location'] = $this->data['locations'][trim($this->session->data['location'])];
-				$this->session->data['location'] = $this->data['location'];
+			if(!empty($location) and !empty($this->data['locations'][trim($location)])){
+				$this->data['location'] = $this->data['locations'][trim($location)];
+				$location = trim($this->data['location']);
+				$this->session->data['location'] = $location;
 				if($this->customer->isLogged()){
-					$this->db->query("UPDATE " . DB_PREFIX . "customer SET location = '" . $this->db->escape($this->data['location']) . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+					$this->db->query("UPDATE " . DB_PREFIX . "customer SET location = '" . $this->db->escape($location) . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
 				}
 			}
 
@@ -72,7 +124,7 @@ class ControllerModuleSetlocation extends Controller {
 	}
 	private function validate(){
 		if ($this->customer->isLogged()) {
-			//	проверим выбранную локацию
+		
 			if(!empty($this->request->get['location'])){
 				$this->request->get['location'] = utf8_strtolower($this->request->get['location']);
 				$this->request->get['location'] = utf8_substr(strip_tags(html_entity_decode($this->request->get['location'], ENT_QUOTES, 'UTF-8')), 0, 120) ;

@@ -42,21 +42,20 @@ $this->data['name'] = $this->config->get('config_name');
 
 		$this->data['continue'] = $this->url->link('home');
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/not_found.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/not_found.tpl';
-		} else {
-			$this->template = 'default/template/not_found.tpl';
-		}
 
+		$this->template = 'default/template/not_found.tpl';
 		$this->children = array(
 			'common/column_left',
 			'common/column_right',
 			'common/content_top',
 			'common/content_bottom',
-			'common/footer',
-			'header'
+			'footer'	
 		);
+		$settings = array();
+		$settings['type_header'] = 1;
+		$settings['class_body'] = 'min-h-screen bg-gray-50 flex flex-col';
 
+		$this->data['header'] = $this->getChild('header',$settings);
 		$this->response->setoutput($this->render());
 	}
 }
